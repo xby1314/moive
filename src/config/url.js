@@ -5,3 +5,6 @@ export const nowPlayingListUrl =
 // 即将上映
 export const comingSoonListUrl =
     'gateway?cityId=310100&pageSize=10&type=2&k=9924543&pageNum='
+
+// 电影详情
+export const movieDetailUrl='gateway?k=1035739&filmId='

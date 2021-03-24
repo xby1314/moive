@@ -1,15 +1,26 @@
 <template>
   <div id="app">
-      <footerNav/>
+      <footerNav v-if="is_show"/>
     <router-view/>
   </div>
 </template>
 <script>
 import footerNav from "@/components/footerNav"
 export default {
+  data() {
+    return {
+      is_show:true
+    }
+  },
     components:{
       footerNav
-    }
+    },
+    created() {
+      this.eventBus.$on("footerNav",(flag)=>{
+        this.is_show=flag
+      })
+    },
+
 }
 </script>
 <style lang="scss">

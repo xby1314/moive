@@ -1,7 +1,7 @@
 <template>
     <div class="nav">
         <ul>
-           <router-link to="/films/nowPlaying" tag="li" active-class="active">
+           <router-link to="/films/nowPlaying" tag="li" active-class="active" >
                 <span>正在热映</span>
             </router-link>
             <router-link to="/films/comingSoon" tag="li" active-class="active">

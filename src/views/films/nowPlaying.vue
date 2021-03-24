@@ -1,21 +1,30 @@
 <template>
     <div>
-        <h1>正在热映</h1>
+       <filmsList :list='list' :type="type" :key="'films'+list.length"></filmsList>
     </div>
 </template>
 <script>
 // 导入正在热映请求方法
 import {nowPalyingListData} from '@/api/api'
+// 导入电影列表
+import filmsList from '@/components/filmsList'
+// // 导入loading
+// import loading from "@/components/loading"
 export default {
     data() {
         return {
             pageNum:1,
-            list:[]
+            list:[],
+            type:1 //当前传递的数据为正在热映的数据
         }
     },
     async mounted() {
         let ret=await nowPalyingListData(this.pageNum)
         this.list=ret.data.data.films;
     },
+    components:{
+        // loading
+        filmsList
+    }
 }
 </script>
