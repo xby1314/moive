@@ -24,13 +24,19 @@ axios.interceptors.request.use(
         // if (info = 'cinemaShow') {
         //     host="mall.film-ticket.film.cinema-show-film"
         // }
-        // if (info = 'city') {
-        //     host = "mall.cfg.cinema.banners";
-        // }
-        config.headers = {
+        if (info =='city') {
+            host = "mall.film-ticket.city.list";
+        }
+        if (config.headers.authorization) {
+            config.headers = {
+               authorization:config.headers.authorization
+           }
+        } else{
+             config.headers = {
             "X-Client-Info":'{"a":"3000","ch":"1002","v":"5.0.4","e":"1602854376219502893596675","bc":"310100"}',
             "X-Host":host
     }
+       }
     return config
 }, function (err) {
     // 错误处理

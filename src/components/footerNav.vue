@@ -35,6 +35,7 @@ export default {
     background: #fff;
     color: #7a7e83;
     width: 100%;
+    z-index: 10;
 
     ul {
         display: flex;

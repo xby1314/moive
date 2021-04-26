@@ -83,12 +83,26 @@ moment.locale("zh-cn")
 export default {
     data() {
         return {
-            film:{actors:[],photos:[],name:[]}
+            film:{actors:[],photos:[],name:[]},
+            tagactive:true,
+            
         }
     },
     async mounted() {
         let ret= await movieDetailData(this.$route.params.filmId)
         this.film=ret.data.data.film
+    },
+    methods: {
+      goBack:function(){
+        this.$router.go(-1)
+      },
+      tagAcctive:function(){
+        if(this.tagactive==true){
+          this.tagactive=false
+        }else{
+          this.tagactive=true
+        }
+      }
     },
     components:{
         Swiper
@@ -101,9 +115,9 @@ export default {
     created() {
       this.eventBus.$emit("footerNav",false)
     },
-    destroyd() {
+    beforeDestroy() {
       this.eventBus.$emit("footerNav",true)
-    },
+    }
 }
 </script>
 <style lang="scss" scoped>
